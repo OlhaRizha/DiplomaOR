@@ -1,4 +1,6 @@
 import pytest
+from modules.api.clients.github import Github
+
 
 class User:
 
@@ -23,4 +25,9 @@ def user():
 
     user.remote()
 
+
+@pytest.fixture
+def github_api():
+    api=Github()
+    yield api
     

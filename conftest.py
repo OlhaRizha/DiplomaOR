@@ -1,7 +1,9 @@
 import pytest
 from modules.api.clients.github import Github
 
-
+#Створення класу User, на основі якого будуть створені тести 
+# (що перевіряють можливість створення користувача, зміни імені користувача, його наявність 
+# та можливість його видалення)
 class User:
 
     def __init__(self):  
@@ -16,6 +18,7 @@ class User:
         self.name=''
         self.second_name=''
 
+#Створення фікстури на основі класу User
 @pytest.fixture
 def user():
     user=User()
@@ -25,7 +28,7 @@ def user():
 
     user.remote()
 
-
+#Створення фікстури на основі класу GitHub
 @pytest.fixture
 def github_api():
     api=Github()

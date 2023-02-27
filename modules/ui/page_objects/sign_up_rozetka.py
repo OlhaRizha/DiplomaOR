@@ -1,6 +1,6 @@
 from modules.ui.page_objects.base_page import BasePage
 from selenium.webdriver.common.by import By
-
+import time
 
 #Створення дочірнього класу SignUpPage(BasePage), на основі якого будуть створені тести 
 # для перевірки веб сторінки Реєстрація на сайті Rozetka
@@ -18,6 +18,7 @@ class SignUpRozetka(BasePage):
     def open_registration_window(self):
         btn_user=self.driver.find_element(By.XPATH, '//rz-user/button')
         btn_user.click()
+        time.sleep(2)
       
         btn_regis=self.driver.find_element(By.XPATH, '//fieldset/div[5]/button[2]')
        
@@ -44,7 +45,7 @@ class SignUpRozetka(BasePage):
 
 
     #Метод об'єкта для введення даних в поле "Прізвище"
-    def try_second_name(self,second_name):
+    def enter_second_name(self,second_name):
         regis_elem2=self.driver.find_element(By.ID, "registerUserSurname")
         regis_elem2.send_keys(second_name)
         

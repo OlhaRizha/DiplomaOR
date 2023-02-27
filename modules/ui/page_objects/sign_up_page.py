@@ -26,3 +26,5 @@ class SignUpPage(BasePage):
         return error_elem==expected_error
     
     
+    
+    

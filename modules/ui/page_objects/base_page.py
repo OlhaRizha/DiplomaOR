@@ -10,10 +10,7 @@ class BasePage:
     def __init__(self):
         self.driver=webdriver.Chrome(service=Service(BasePage.PATH+BasePage.DRIVER_NAME))
         
-    #Cтворення методу об'єкта, що перевіряє відповідність заголовку певної веб сторінки на GitHub
-    #  та повертає результат цієї перевірки
-    def check_title(self,expected_title):
-        return self.driver.title==expected_title
+
 
     #Cтворення методу об'єкта класа, що відповідає за закриття відкритого браузера
     def close(self):

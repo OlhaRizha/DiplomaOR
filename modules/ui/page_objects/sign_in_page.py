@@ -13,6 +13,11 @@ class SignInPage(BasePage):
     def go_to(self):
         self.driver.get(SignInPage.URL)
 
+    #Cтворення методу об'єкта, що перевіряє відповідність заголовку певної веб сторінки на GitHub
+    #  та повертає результат цієї перевірки
+    def check_title(self,expected_title):
+        return self.driver.title==expected_title
+
     #Створення методу об'єкта, що виконує ввід певних даних для виконання входу на GitHub
     def try_login(self,username,password):
         login_elem=self.driver.find_element(By.ID, "login_field")

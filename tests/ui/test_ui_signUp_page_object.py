@@ -1,4 +1,5 @@
 from modules.ui.page_objects.sign_up_page import SignUpPage
+from modules.ui.page_objects.base_page import BasePage
 import pytest
 import time
 
@@ -15,13 +16,11 @@ def test_check_incorrect_data_for_sign_up_page():
 
     time.sleep(2)
 
-    sign_up_page.try_email("olharizha@gmail.com")
-
-    time.sleep(2)
+    sign_up_page.enter_email("olharizha@gmail.com")
 
     sign_up_page.check_error("Email is invalid or already taken")
 
-    assert sign_up_page.check_title("Join GitHub · GitHub")
+    assert BasePage.check_title("Sign in to GitHub · GitHub")
 
 
     sign_up_page.close()

@@ -1,4 +1,5 @@
 from modules.ui.page_objects.sign_in_page import SignInPage
+from modules.ui.page_objects.base_page import BasePage
 import pytest
 
 #Створення теста з міткою ui, що створює об'єкт класу SignInPage,
@@ -10,6 +11,6 @@ def test_check_incorrect_data_for_sign_in_page():
     sign_in_page.go_to()
     sign_in_page.try_login("example@mail.com","wrongpassword")
 
-    assert sign_in_page.check_title("Sign in to GitHub · GitHub")
+    assert BasePage.check_title("Sign in to GitHub · GitHub")
 
     sign_in_page.close()

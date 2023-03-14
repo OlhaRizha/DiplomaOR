@@ -1,29 +1,48 @@
 from modules.ui.page_objects.base_page import BasePage
 from selenium.webdriver.common.by import By
 
-#Створення дочірнього класу SignInPage(BasePage), на основі якого будуть створені тести 
-# для перевірки веб сторінки Sign In на сайті GitHub
+
 class SignInPage(BasePage):
-    URL='https://github.com/login'
+    """
+    A class representing the Sign In page on GitHub website.
+
+    Inherits from the BasePage class and adds methods to interact with the Sign In page.
+    """
+    URL = 'https://github.com/login'
 
     def __init__(self):
+        """
+        Initializes an instance of the SignInPage class.
+
+        Calls the constructor of the BasePage class to initialize the driver.
+        """
         super().__init__()
 
-    #Створення методу об'єкта що відправляє запит GET на URL адресу
     def go_to(self):
+        """
+        Navigates to the Sign In page by sending a GET request to its URL.
+        """
         self.driver.get(SignInPage.URL)
 
-    #Cтворення методу об'єкта, що перевіряє відповідність заголовку певної веб сторінки на GitHub
-    #  та повертає результат цієї перевірки
-    def check_title(self,expected_title):
-        return self.driver.title==expected_title
+    def check_title(self, expected_title):
+        """
+        Checks if the title of the current page matches the expected title.
 
-    #Створення методу об'єкта, що виконує ввід певних даних для виконання входу на GitHub
-    def try_login(self,username,password):
-        login_elem=self.driver.find_element(By.ID, "login_field")
+        :param expected_title: The expected title of the page.
+        :return: True if the title matches, False otherwise.
+        """
+        return self.driver.title == expected_title
+
+    def try_login(self, username, password):
+        """
+        Attempts to log in to GitHub with the specified credentials.
+
+        :param username: The username to log in with.
+        :param password: The password to log in with.
+        """
+        login_elem = self.driver.find_element(By.ID, "login_field")
         login_elem.send_keys(username)
-        pass_elem=self.driver.find_element(By.ID, "password")
+        pass_elem = self.driver.find_element(By.ID, "password")
         pass_elem.send_keys(password)
-        btn_elem=self.driver.find_element(By.NAME, "commit")
+        btn_elem = self.driver.find_element(By.NAME, "commit")
         btn_elem.click()
-
